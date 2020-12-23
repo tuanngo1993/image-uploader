@@ -4,7 +4,7 @@ import { Button, Loader, Segment, Icon } from "semantic-ui-react";
 import "./image-uploader.css";
 import previewImage from "../../images/preview-image.svg";
 
-export class imageUploader extends React.Component {
+export class ImageUploader extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -107,7 +107,6 @@ export class imageUploader extends React.Component {
 						{this.props.status === "upload" && (
 							<>
 								<p>OR</p>
-
 								<Button
 									primary
 									onClick={this.focusUploadInputHandler}

@@ -3,7 +3,7 @@ import React from "react";
 import "./App.css";
 import image from "./images/image.png";
 
-import { imageUploader as ImageUploader } from "./components/image-uploader/image-uploader.js";
+import { ImageUploader } from "./components/image-uploader/image-uploader.js";
 
 export class App extends React.Component {
 	constructor(props) {
@@ -18,7 +18,6 @@ export class App extends React.Component {
 	}
 
 	uploadFileHandler(item, status) {
-		console.log(item, status);
 		setTimeout(() => {
 			this.setState({
 				status: status,
@@ -40,7 +39,9 @@ export class App extends React.Component {
 					onChangeHandler={this.uploadFileHandler}
 					link={this.state.link}
 					image={
-						status === "success" && <img src={image} alt="success" />
+						status === "success" && (
+							<img src={image} alt="success" />
+						)
 					}
 				/>
 			</div>
