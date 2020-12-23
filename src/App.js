@@ -1,9 +1,10 @@
 import React from "react";
 
 import "./App.css";
-import image from "./images/image.png";
 
 import { ImageUploader } from "./components/image-uploader/image-uploader.js";
+import { PreviewUploader } from "./components/image-uploader/preview-uploader.js";
+import { LoadingUploader } from "./components/image-uploader/loading-uploader.js";
 
 export class App extends React.Component {
 	constructor(props) {
@@ -11,19 +12,17 @@ export class App extends React.Component {
 
 		this.state = {
 			status: "upload",
-			link: "",
+			url: "",
 		};
 
-		this.uploadFileHandler = this.uploadFileHandler.bind(this);
+		this.handleFileUpload = this.handleFileUpload.bind(this);
 	}
 
-	uploadFileHandler(item, status) {
+	handleFileUpload(item) {
 		setTimeout(() => {
 			this.setState({
-				status: status,
-				link: `https://images.mydomain.com/${item[0].name
-					.split(" ")
-					.join("-")}`,
+				status: "success",
+				url: process.env.PUBLIC_URL + "/images/image.png",
 			});
 		}, 3000);
 
@@ -31,19 +30,14 @@ export class App extends React.Component {
 	}
 
 	render() {
-		const { status } = this.state;
+		const { status, url } = this.state;
 		return (
 			<div className="App">
-				<ImageUploader
-					status={status}
-					onChangeHandler={this.uploadFileHandler}
-					link={this.state.link}
-					image={
-						status === "success" && (
-							<img src={image} alt="success" />
-						)
-					}
-				/>
+				{status === "upload" && (
+					<PreviewUploader onChange={this.handleFileUpload} />
+				)}
+				{status === "loading" && <LoadingUploader />}
+				{status === "success" && <ImageUploader url={url} />}
 			</div>
 		);
 	}
