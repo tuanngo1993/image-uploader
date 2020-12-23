@@ -50,10 +50,10 @@
 
 .image-uploader__input {
 	display: none;
+	opacity: 0;
 }
 
 .image-uploader__footer {
-	
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -61,6 +61,10 @@
 
 .image-uploader__footer:not(:empty) {
 	margin-top: 20px;
+}
+
+.image-uploader__footer .button {
+	position: relative;
 }
 
 .image-uploader__loading .segment {
@@ -77,12 +81,12 @@
 
 .image-uploader__share-area {
 	display: flex;
-    align-items: center;
-    background-color: #f5f3f3;
-    padding: 2px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+	align-items: center;
+	background-color: #f5f3f3;
+	padding: 2px;
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 10px;
 }
 
 .image-uploader__share-area .button {
