@@ -1,9 +1,9 @@
 import React from "react";
 
 import "./App.css";
-import { imageUploader as ImageUploader } from "./components/image-uploader/image-uploader.js";
+import image from "./images/image.png";
 
-//https://images.yourdomain.com/photo-1496950866446-325
+import { imageUploader as ImageUploader } from "./components/image-uploader/image-uploader.js";
 
 export class App extends React.Component {
 	constructor(props) {
@@ -32,12 +32,16 @@ export class App extends React.Component {
 	}
 
 	render() {
+		const { status } = this.state;
 		return (
 			<div className="App">
 				<ImageUploader
-					status={this.state.status}
+					status={status}
 					onChangeHandler={this.uploadFileHandler}
 					link={this.state.link}
+					image={
+						status === "success" && <img src={image} alt="success" />
+					}
 				/>
 			</div>
 		);

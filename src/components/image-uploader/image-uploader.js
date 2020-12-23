@@ -3,7 +3,6 @@ import { Button, Loader, Segment, Icon } from "semantic-ui-react";
 
 import "./image-uploader.css";
 import previewImage from "../../images/preview-image.svg";
-import image from "../../images/image.png";
 
 export class imageUploader extends React.Component {
 	constructor(props) {
@@ -24,7 +23,6 @@ export class imageUploader extends React.Component {
 	}
 
 	onChangeFileHandler(e) {
-		console.log(e.target.files);
 		if (e.target.files && e.target.files.length > 0) {
 			this.fileUploadHanlder(e.target.files, "success");
 		}
@@ -99,11 +97,9 @@ export class imageUploader extends React.Component {
 						)}
 						{this.props.status === "success" && (
 							<div className="image-uploader__uploaded-area">
-								<img
-									className="image-uploader__uploaded-image"
-									src={image}
-									alt="success"
-								/>
+								<div className="image-uploader__uploaded-image">
+									{this.props.image}
+								</div>
 							</div>
 						)}
 					</div>
