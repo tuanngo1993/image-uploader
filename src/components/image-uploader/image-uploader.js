@@ -14,6 +14,7 @@ export class ImageUploader extends React.Component {
 		this.onChangeFileHandler = this.onChangeFileHandler.bind(this);
 		this.onDropHandler = this.onDropHandler.bind(this);
 		this.onDragOverHandler = this.onDragOverHandler.bind(this);
+		this.copyLinkHandler = this.copyLinkHandler.bind(this);
 	}
 
 	fileUploadHanlder(file, status) {
@@ -39,6 +40,17 @@ export class ImageUploader extends React.Component {
 	onDropHandler(e) {
 		e.preventDefault();
 		this.fileUploadHanlder(e.dataTransfer.files, "success");
+	}
+
+	copyLinkHandler() {
+		navigator.clipboard
+			.writeText(this.props.link)
+			.then(() => {
+				alert("Copied link!!!");
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	}
 
 	render() {
@@ -120,7 +132,11 @@ export class ImageUploader extends React.Component {
 								<div className="image-uploader__link">
 									{this.props.link}
 								</div>
-								<Button primary size="large">
+								<Button
+									primary
+									size="large"
+									onClick={this.copyLinkHandler}
+								>
 									Copy Link
 								</Button>
 							</div>
