@@ -45,6 +45,11 @@
 	border: 1px dashed #7d7dff;
 }
 
+.image-uploader__body {
+  display: flex;
+  justify-content: center;
+}
+
 .image-uploader__dnd-preview-image {
 	margin-bottom: 40px;
 }
@@ -78,6 +83,10 @@
 .image-uploader__uploaded-area {
 	border-radius: 30px;
 	overflow: hidden;
+}
+
+.image-uploader__uploaded-image > * {
+  max-height: 400px;
 }
 
 .image-uploader__share-area {

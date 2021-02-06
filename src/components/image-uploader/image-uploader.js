@@ -6,7 +6,7 @@ import "./image-uploader.css";
 export const ImageUploader = (props) => {
 	const handleCopyLink = () => {
 		navigator.clipboard
-			.writeText(props.url)
+			.writeText(props.file.path)
 			.then(() => {
 				alert("Copied link!!!");
 			})
@@ -27,13 +27,15 @@ export const ImageUploader = (props) => {
 				<div className="image-uploader__body">
 					<div className="image-uploader__uploaded-area">
 						<div className="image-uploader__uploaded-image">
-							<img src={props.url} alt="success" />
+							<img src={props.file.path} alt={props.file.name} />
 						</div>
 					</div>
 				</div>
 				<div className="image-uploader__footer">
 					<div className="image-uploader__share-area">
-						<div className="image-uploader__link">{props.url}</div>
+						<div className="image-uploader__link">
+							{props.file.path}
+						</div>
 						<Button primary size="large" onClick={handleCopyLink}>
 							Copy Link
 						</Button>

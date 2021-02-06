@@ -10,13 +10,13 @@ export const PreviewUploader = (props) => {
 		}
 	};
 
-	const handleClickButton = () => {
+	const handleClickButton = (e) => {
 		inputEl.current.click();
 	};
 
-	const handleChangeFileUpoad = (e) => {
+	const handleChangeFileUpload = (e) => {
 		if (e.target.files && e.target.files.length > 0) {
-			handleFileUpload(e.target.files);
+			handleFileUpload(e.target.files[0]);
 		}
 	};
 
@@ -24,7 +24,7 @@ export const PreviewUploader = (props) => {
 
 	const handleDrop = (e) => {
 		e.preventDefault();
-		handleFileUpload(e.dataTransfer.files);
+		handleFileUpload(e.dataTransfer.files[0]);
 	};
 
 	return (
@@ -58,7 +58,7 @@ export const PreviewUploader = (props) => {
 						<input
 							type="file"
 							className="image-uploader__input"
-							onChange={handleChangeFileUpoad}
+							onChange={handleChangeFileUpload}
 							ref={inputEl}
 						></input>
 					</div>
